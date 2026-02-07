@@ -147,6 +147,9 @@
     .ending-hearts { position: absolute; inset: 0; overflow: hidden; }
     .ending-heart { position: absolute; width: 24px; height: 24px; animation: ending-heart-float 4s ease-out forwards; }
     @keyframes ending-heart-float { 0% { transform: translateY(0) scale(0.5); opacity: 0.8; } 100% { transform: translateY(-120vh) scale(1); opacity: 0; } }
+    .ending-roses { position: absolute; inset: 0; pointer-events: none; overflow: visible; }
+    .ending-rose { position: absolute; left: 50%; top: 50%; width: 36px; height: 36px; margin-left: -18px; margin-top: -18px; font-size: 1.75rem; display: flex; align-items: center; justify-content: center; animation: rose-firework 2s ease-out forwards; opacity: 0; }
+    @keyframes rose-firework { 0% { transform: translate(0, 0) scale(0.2); opacity: 1; } 100% { transform: translate(var(--dx), var(--dy)) scale(1); opacity: 0; } }
     .ending-message { position: absolute; left: 50%; top: 28%; transform: translate(-50%, -50%); text-align: center; padding: 1rem 1.5rem; opacity: 0; transition: opacity 1s ease 0.5s; max-width: 320px; z-index: 10; }
     .ending-overlay.active .ending-message { opacity: 1; }
     .ending-message p { font-family: 'Dancing Script', cursive; font-size: 1.5rem; color: var(--text-deep); line-height: 1.6; }
@@ -258,6 +261,7 @@
   </section>
 
   <div class="ending-overlay" id="endingOverlay">
+    <div class="ending-roses" id="endingRoses"></div>
     <div class="ending-hearts" id="endingHearts"></div>
     <div class="ending-message" id="endingMessage">
       <p>Bas itna hi chahiye tha…<br>tumhari ek si choti si haan.</p>
@@ -275,6 +279,7 @@
         Mujhe pata hai tum samajh jaogi.<br>
         <strong>Main hamesha tumhare liye hoon.</strong>
       </p>
+      <h1 class="ending-personal-text"><strong>Sorry</strong></h1>
     </div>
   </div>
 
@@ -344,6 +349,7 @@
     var fabBtn = document.getElementById('fabBtn');
     var endingOverlay = document.getElementById('endingOverlay');
     var endingHearts = document.getElementById('endingHearts');
+    var endingRoses = document.getElementById('endingRoses');
     var chimeSound = document.getElementById('chimeSound');
     var heartSvgEnd = '<svg viewBox="0 0 24 24" fill="#e88a9a" width="24" height="24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
     function playChime(){
@@ -363,7 +369,24 @@
     if(fabBtn && endingOverlay && endingHearts){
       fabBtn.addEventListener('click', function(){
         endingOverlay.classList.add('active');
+        if(music && music.paused){ music.play().catch(function(){}); if(musicBtn) musicBtn.classList.add('playing'); }
         playChime();
+        if(endingRoses){
+          var maxDist = 280;
+          for(var r = 0; r < 55; r++){
+            var angle = (Math.PI * 2 * r) / 55 + Math.random() * 0.5;
+            var dist = maxDist * (0.4 + Math.random() * 0.6);
+            var dx = Math.cos(angle) * dist;
+            var dy = Math.sin(angle) * dist;
+            var rose = document.createElement('div');
+            rose.className = 'ending-rose';
+            rose.textContent = '🌹';
+            rose.style.setProperty('--dx', dx + 'px');
+            rose.style.setProperty('--dy', dy + 'px');
+            rose.style.animationDelay = (Math.random() * 0.2) + 's';
+            endingRoses.appendChild(rose);
+          }
+        }
         for(var i = 0; i < 40; i++){
           var h = document.createElement('div');
           h.className = 'ending-heart';
