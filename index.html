@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Vaidehi ❤️ Rose Day</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink-soft: #f8d7da;
+      --pink-mid: #f4a6b0;
+      --pink-deep: #e88a9a;
+      --cream: #fff5f5;
+      --cream-warm: #ffe4e8;
+      --text-soft: #8b5a6b;
+      --text-deep: #6b4452;
+      --shadow-soft: rgba(232, 138, 154, 0.25);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, var(--cream) 0%, var(--cream-warm) 50%, var(--pink-soft) 100%);
+      min-height: 100vh;
+      color: var(--text-deep);
+      overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .scene {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1.5rem 4rem;
+      position: relative;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+    }
+    .scene.visible { opacity: 1; transform: translateY(0); }
+    .scene-text {
+      max-width: 320px;
+      text-align: center;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-soft);
+      margin-top: 1.5rem;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+    }
+    .scene.visible .scene-text { opacity: 1; transform: translateY(0); }
+    .scene-text.script { font-family: 'Dancing Script', cursive; font-size: 1.35rem; color: var(--text-deep); }
+    .scene-joke { font-size: 0.8rem; color: var(--pink-deep); margin-top: 0.5rem; opacity: 0.9; }
+    .illus-wrap { width: 100%; max-width: 280px; min-height: 140px; display: flex; justify-content: center; align-items: center; position: relative; }
+    .illus-wrap svg { max-width: 100%; height: auto; filter: drop-shadow(0 4px 12px var(--shadow-soft)); }
+
+    /* Scene 1 – Boy wakes up */
+    .wake-wrap { position: relative; }
+    .boy-wake { width: 100px; animation: bounce-wake 1.2s ease-out infinite; }
+    .doodle-pop { position: absolute; top: -8px; right: -15px; font-size: 1.2rem; font-weight: 700; color: var(--pink-deep); animation: pop-in 0.6s ease-out; opacity: 0; }
+    .scene.visible .doodle-pop { animation: pop-in 0.5s ease-out 0.3s forwards; }
+    @keyframes bounce-wake { 0%, 100% { transform: translateY(0) scale(1); } 30% { transform: translateY(-8px) scale(1.02); } 60% { transform: translateY(2px) scale(0.98); } }
+    @keyframes pop-in { 0% { transform: scale(0); opacity: 0; } 70% { transform: scale(1.3); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+
+    /* Scene 2 – Walk + tappable hearts */
+    .walk-stage { width: 100%; max-width: 260px; height: 140px; position: relative; }
+    .boy-walk-game { position: absolute; left: 0; bottom: 20px; width: 70px; animation: walk-frames 1.2s steps(4) infinite; }
+    @keyframes walk-frames {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(180px); }
+    }
+    .collect-heart { position: absolute; width: 32px; height: 32px; font-size: 1.6rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.15s; z-index: 2; }
+    .collect-heart:hover { transform: scale(1.15); }
+    .collect-heart.popped { pointer-events: none; animation: heart-pop 0.4s ease-out forwards; }
+    @keyframes heart-pop { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.4); opacity: 1; } 100% { transform: scale(2); opacity: 0; } }
+    .heart-float-bg { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; }
+    .heart-float-bg .heart-tiny { position: absolute; width: 14px; height: 14px; opacity: 0.6; animation: float-up 4s ease-in infinite; pointer-events: none; }
+    .heart-float-bg .heart-tiny:nth-child(1) { left: 20%; bottom: 15%; animation-delay: 0s; }
+    .heart-float-bg .heart-tiny:nth-child(2) { left: 60%; bottom: 10%; animation-delay: 1s; }
+    .heart-float-bg .heart-tiny:nth-child(3) { left: 40%; bottom: 5%; animation-delay: 2s; }
+    @keyframes float-up { 0% { transform: translateY(0); opacity: 0; } 20% { opacity: 0.6; } 100% { transform: translateY(-100px); opacity: 0; } }
+
+    /* Scene 3 – Phone portal + bump */
+    .phone-portal-wrap { position: relative; width: 180px; }
+    .phone-glow { filter: drop-shadow(0 0 20px rgba(232,138,154,0.6)) drop-shadow(0 0 40px rgba(244,166,176,0.4)); animation: portal-pulse 2s ease-in-out infinite; }
+    @keyframes portal-pulse { 0%, 100% { filter: drop-shadow(0 0 20px rgba(232,138,154,0.6)); } 50% { filter: drop-shadow(0 0 30px rgba(232,138,154,0.9)); } }
+    .boy-bump { position: absolute; left: 0; bottom: 0; width: 65px; animation: walk-then-bump 4s ease-in-out infinite; }
+    @keyframes walk-then-bump { 0% { transform: translateX(0); } 35% { transform: translateX(75px); } 45% { transform: translateX(72px) translateX(-3px); } 50% { transform: translateX(75px) translateX(3px); } 55% { transform: translateX(75px) translateX(-2px); } 60%, 100% { transform: translateX(75px); } }
+    .scene-funny { font-size: 0.85rem; color: var(--pink-deep); margin-top: 0.4rem; font-style: italic; }
+
+    /* Scene 4 – Dreamy + rub fog */
+    .scene.dreamy { background: linear-gradient(180deg, rgba(255,245,250,0.98) 0%, rgba(255,228,235,0.98) 100%); }
+    .scene.dreamy::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 30%, rgba(244,166,176,0.15) 0%, transparent 60%); pointer-events: none; }
+    .sparkle { position: absolute; width: 8px; height: 8px; background: var(--pink-mid); border-radius: 50%; opacity: 0.7; animation: sparkle-float 3s ease-in-out infinite; }
+    .sparkle:nth-child(1) { top: 15%; left: 20%; animation-delay: 0s; }
+    .sparkle:nth-child(2) { top: 25%; right: 25%; animation-delay: 0.8s; }
+    .sparkle:nth-child(3) { bottom: 30%; left: 15%; animation-delay: 1.6s; }
+    .sparkle:nth-child(4) { bottom: 20%; right: 20%; animation-delay: 2.2s; }
+    @keyframes sparkle-float { 0%, 100% { transform: translateY(0); opacity: 0.5; } 50% { transform: translateY(-15px); opacity: 0.9; } }
+    .rub-zone { position: relative; width: 160px; height: 220px; border-radius: 20px; overflow: hidden; background: linear-gradient(180deg, #fffafb 0%, #fff0f3 100%); border: 2px solid var(--pink-mid); cursor: grab; user-select: none; -webkit-user-select: none; touch-action: none; }
+    .rub-zone:active { cursor: grabbing; }
+    .fog-layer { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(248,215,218,0.5) 100%); pointer-events: none; transition: opacity 0.8s; }
+    .rub-zone.rubbed .fog-layer { opacity: 0; }
+    .boy-in-phone-small { position: absolute; left: 50%; bottom: 22%; transform: translateX(-50%); width: 45px; animation: walk-in-phone 3.5s ease-in-out infinite; }
+    @keyframes walk-in-phone { 0% { transform: translateX(-50%) translateX(-15px); opacity: 0.7; } 50% { transform: translateX(-50%) translateX(0); opacity: 1; } 100% { transform: translateX(-50%) translateX(15px); opacity: 0.8; } }
+    .rub-hint { font-size: 0.75rem; color: var(--text-soft); margin-top: 0.5rem; }
+    .rub-hearts { position: absolute; inset: 0; pointer-events: none; }
+    .rub-heart { position: absolute; width: 18px; height: 18px; animation: rub-heart-appear 1.2s ease-out forwards; }
+    @keyframes rub-heart-appear { 0% { transform: scale(0); opacity: 0; } 60% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(1); opacity: 0.8; } }
+
+    /* Scene 5 – Mini game */
+    .game-stage { width: 100%; max-width: 280px; height: 200px; position: relative; background: linear-gradient(180deg, rgba(255,245,250,0.8) 0%, rgba(255,228,235,0.6) 100%); border-radius: 16px; border: 2px solid var(--pink-mid); overflow: hidden; }
+    .game-boy { position: absolute; left: 30px; bottom: 30px; width: 50px; transition: transform 0.25s ease-out; z-index: 3; }
+    .game-boy.jumping { animation: jump-up 0.5s ease-out; }
+    @keyframes jump-up { 0% { transform: translateY(0); } 40% { transform: translateY(-45px); } 100% { transform: translateY(0); } }
+    .obstacle { position: absolute; cursor: pointer; z-index: 2; transition: transform 0.1s; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; }
+    .obstacle:active { transform: scale(0.95); }
+    .obstacle.heart-ob { left: 90px; bottom: 55px; width: 36px; height: 36px; }
+    .obstacle.cloud-ob { left: 150px; bottom: 70px; width: 40px; height: 28px; }
+    .obstacle.rose-ob { left: 210px; bottom: 50px; width: 32px; height: 36px; }
+    .game-vaidehi { position: absolute; right: 25px; bottom: 35px; width: 45px; z-index: 1; }
+    .popup-msg { position: absolute; left: 50%; transform: translateX(-50%); top: 15px; background: rgba(255,255,255,0.95); padding: 0.5rem 0.9rem; border-radius: 12px; font-size: 0.85rem; color: var(--text-deep); border: 2px solid var(--pink-mid); box-shadow: 0 4px 16px var(--shadow-soft); z-index: 10; opacity: 0; pointer-events: none; white-space: normal; max-width: 92%; text-align: center; }
+    .popup-msg.show { animation: popup-show 2.2s ease-out; }
+    @keyframes popup-show { 0% { opacity: 0; transform: translateX(-50%) translateY(-10px); } 15% { opacity: 1; transform: translateX(-50%) translateY(0); } 80% { opacity: 1; } 100% { opacity: 0; transform: translateX(-50%) translateY(-5px); } }
+
+    /* Scene 6 – Hug */
+    .hug-wrap { position: relative; width: 200px; }
+    .hug-zoom { animation: gentle-zoom 4s ease-in-out infinite; transform-origin: center center; }
+    @keyframes gentle-zoom { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+    .heart-burst { position: absolute; width: 22px; height: 22px; opacity: 0; animation: heart-burst 2s ease-out infinite; }
+    .heart-burst:nth-child(1) { top: 5%; left: 10%; animation-delay: 0.2s; }
+    .heart-burst:nth-child(2) { top: 15%; right: 15%; animation-delay: 0.6s; }
+    .heart-burst:nth-child(3) { bottom: 20%; left: 15%; animation-delay: 1s; }
+    .heart-burst:nth-child(4) { bottom: 10%; right: 10%; animation-delay: 1.4s; }
+    .heart-burst:nth-child(5) { top: 45%; left: 5%; animation-delay: 1.8s; }
+    .heart-burst:nth-child(6) { top: 40%; right: 5%; animation-delay: 2.2s; }
+    @keyframes heart-burst { 0% { transform: scale(0); opacity: 0; } 30% { opacity: 0.9; } 100% { transform: scale(1.3); opacity: 0; } }
+
+    /* Fabulous ending overlay */
+    .ending-overlay { position: fixed; inset: 0; z-index: 200; pointer-events: none; opacity: 0; transition: opacity 0.6s ease; background: linear-gradient(180deg, rgba(255,182,193,0.95) 0%, rgba(255,192,203,0.98) 100%); }
+    .ending-overlay.active { pointer-events: auto; opacity: 1; }
+    .ending-hearts { position: absolute; inset: 0; overflow: hidden; }
+    .ending-heart { position: absolute; width: 24px; height: 24px; animation: ending-heart-float 4s ease-out forwards; }
+    @keyframes ending-heart-float { 0% { transform: translateY(0) scale(0.5); opacity: 0.8; } 100% { transform: translateY(-120vh) scale(1); opacity: 0; } }
+    .ending-message { position: absolute; left: 50%; top: 28%; transform: translate(-50%, -50%); text-align: center; padding: 1rem 1.5rem; opacity: 0; transition: opacity 1s ease 0.5s; max-width: 320px; z-index: 10; }
+    .ending-overlay.active .ending-message { opacity: 1; }
+    .ending-message p { font-family: 'Dancing Script', cursive; font-size: 1.5rem; color: var(--text-deep); line-height: 1.6; }
+    .ending-personal-wrap { position: absolute; left: 50%; top: 72%; transform: translate(-50%, -50%); width: 100%; max-width: 340px; padding: 1.5rem; z-index: 10; opacity: 0; transition: opacity 1.2s ease 1.5s; pointer-events: none; }
+    .ending-overlay.active .ending-personal-wrap { opacity: 1; }
+    .ending-glow-heart { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 160px; height: 160px; pointer-events: none; z-index: 0; }
+    .ending-glow-heart svg { width: 100%; height: 100%; filter: drop-shadow(0 0 35px rgba(232,138,154,0.5)); animation: ending-heart-glow 2.5s ease-in-out infinite; }
+    @keyframes ending-heart-glow { 0%, 100% { opacity: 0.35; transform: scale(1); } 50% { opacity: 0.75; transform: scale(1.1); } }
+    .ending-personal-text { position: relative; z-index: 1; text-align: center; font-family: 'Poppins', sans-serif; font-size: 0.95rem; line-height: 1.75; color: var(--text-deep); padding: 0 0.5rem; }
+    .ending-personal-text strong { color: var(--text-deep); font-weight: 600; }
+    .fab-btn { padding: 1rem 1.5rem; font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 500; color: var(--text-deep); background: linear-gradient(135deg, var(--pink-soft) 0%, var(--pink-mid) 100%); border: 2px solid var(--pink-deep); border-radius: 999px; cursor: pointer; box-shadow: 0 4px 16px var(--shadow-soft); margin-top: 2rem; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+    .fab-btn:hover, .fab-btn:active { transform: scale(1.02); }
+    .music-toggle { position: fixed; top: 1rem; right: 1rem; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.9); border: 2px solid var(--pink-mid); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 50; box-shadow: 0 2px 12px var(--shadow-soft); -webkit-tap-highlight-color: transparent; }
+    .music-toggle.playing { background: var(--pink-soft); }
+    .music-toggle svg { width: 22px; height: 22px; fill: var(--pink-deep); }
+  </style>
+</head>
+<body>
+  <audio id="bgMusic" loop preload="metadata"><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"></audio>
+  <audio id="chimeSound" preload="auto"></audio>
+  <button class="music-toggle" id="musicToggle" aria-label="Toggle music"><svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></button>
+
+  <section class="scene" id="scene1">
+    <div class="illus-wrap wake-wrap">
+      <span class="doodle-pop" aria-hidden="true">!!</span>
+      <svg class="boy-wake" viewBox="0 0 80 120" fill="none" stroke="#6b4452" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="40" cy="22" r="14"/><path d="M40 36 v28 M32 64 l8 24 M48 64 l-8 24 M32 88 l16 0"/><path d="M28 52 l-6 4 M52 52 l6 4"/><path d="M24 44 Q40 38 56 44" stroke-width="1.2"/><path d="M36 78 Q40 72 44 78"/><circle cx="38" cy="20" r="2" fill="#6b4452"/><circle cx="42" cy="20" r="2" fill="#6b4452"/>
+      </svg>
+    </div>
+    <p class="scene-text">Main raat ko late ho gaya… aur tum gussa ho…<br>par mujhe to tumse baat karne ki addiction hai, Vaidehi.</p>
+    <p class="scene-text scene-joke">(Time se only alarms uthte hain… main nahi.)</p>
+  </section>
+
+  <section class="scene" id="scene2">
+    <div class="illus-wrap">
+      <div class="walk-stage">
+        <div class="heart-float-bg">
+          <svg class="heart-tiny" viewBox="0 0 24 24" fill="#e88a9a"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <svg class="heart-tiny" viewBox="0 0 24 24" fill="#f4a6b0"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <svg class="heart-tiny" viewBox="0 0 24 24" fill="#e88a9a"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </div>
+        <div class="collect-heart" data-heart="1" style="left:22%;bottom:45%;" title="Tap me!">❤️</div>
+        <div class="collect-heart" data-heart="2" style="left:48%;bottom:55%;" title="Tap me!">❤️</div>
+        <div class="collect-heart" data-heart="3" style="left:72%;bottom:40%;" title="Tap me!">❤️</div>
+        <svg class="boy-walk-game" viewBox="0 0 80 120" fill="none" stroke="#6b4452" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="40" cy="22" r="14"/><path d="M40 36 v28 M32 64 l8 24 M48 64 l-8 24 M32 88 l16 0"/><path d="M28 52 l-6 4 M52 52 l6 4"/><path d="M24 44 Q40 38 56 44" stroke-width="1.2"/><path d="M36 78 Q40 72 44 78"/><circle cx="38" cy="20" r="2" fill="#6b4452"/><circle cx="42" cy="20" r="2" fill="#6b4452"/>
+        </svg>
+      </div>
+    </div>
+    <p class="scene-text">Par gussa ho ya pyaar…<br>tum meri ho… isliye aa raha hoon tumhare paas.</p>
+  </section>
+
+  <section class="scene" id="scene3">
+    <div class="illus-wrap phone-portal-wrap">
+      <svg class="phone-glow" viewBox="0 0 100 180" width="120" fill="none" stroke="#8b5a6b" stroke-width="2.5"><rect x="10" y="5" width="80" height="170" rx="12" fill="#fff5f5" stroke="#e88a9a"/><circle cx="50" cy="165" r="8" fill="#f4a6b0"/><rect x="42" y="12" width="16" height="6" rx="3" fill="#e88a9a"/></svg>
+      <svg class="boy-bump" viewBox="0 0 80 120" fill="none" stroke="#6b4452" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="22" r="14"/><path d="M40 36 v28 M32 64 l8 24 M48 64 l-8 24 M32 88 l16 0"/><path d="M28 52 l-6 4 M52 52 l6 4"/><path d="M24 44 Q40 38 56 44" stroke-width="1.2"/><path d="M36 78 Q40 72 44 78"/><circle cx="38" cy="20" r="2" fill="#6b4452"/><circle cx="42" cy="20" r="2" fill="#6b4452"/></svg>
+    </div>
+    <p class="scene-text">Tumne call nahi uthaya…<br>to maine socha…<br>screen ke andar aa hi jaata hoon.</p>
+    <p class="scene-text scene-funny">(Yes I'm smart… phone ke andar aane jitna.)</p>
+  </section>
+
+  <section class="scene dreamy" id="scene4">
+    <div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div>
+    <div class="illus-wrap">
+      <div class="rub-zone" id="rubZone">
+        <div class="fog-layer" id="fogLayer"></div>
+        <div class="rub-hearts" id="rubHearts"></div>
+        <svg class="boy-in-phone-small" viewBox="0 0 80 120" fill="none" stroke="#6b4452" stroke-width="1.5" stroke-linecap="round"><circle cx="40" cy="22" r="12"/><path d="M40 34 v24 M30 58 l10 22 M50 58 l-10 22 M30 80 l20 0"/><path d="M26 48 l-5 3 M54 48 l5 3"/><circle cx="37" cy="20" r="1.5" fill="#6b4452"/><circle cx="43" cy="20" r="1.5" fill="#6b4452"/></svg>
+      </div>
+    </div>
+    <p class="scene-text">Gussa jitna bhi ho jao…<br>par main tumhe chhod ke kahin nahi jaata.</p>
+    <p class="scene-text rub-hint">Rub the screen to clean the fog</p>
+  </section>
+
+  <section class="scene" id="scene5">
+    <div class="illus-wrap">
+      <div class="game-stage" id="gameStage">
+        <div class="popup-msg" id="popupMsg"></div>
+        <svg class="game-boy" id="gameBoy" viewBox="0 0 80 120" fill="none" stroke="#6b4452" stroke-width="1.5"><circle cx="40" cy="22" r="12"/><path d="M40 34 v24 M30 58 l10 22 M50 58 l-10 22 M30 80 l20 0"/><path d="M26 48 l-5 3 M54 48 l5 3"/><circle cx="37" cy="20" r="1.5" fill="#6b4452"/><circle cx="43" cy="20" r="1.5" fill="#6b4452"/></svg>
+        <div class="obstacle heart-ob" data-msg="Yeh jump tumhare liye." title="Tap to help him jump!">❤️</div>
+        <div class="obstacle cloud-ob" data-msg="Roz tumhare peeche aise hi bhagta hoon." title="Tap to help him jump!">☁️</div>
+        <div class="obstacle rose-ob" data-msg="Side me ho jao… dil phisal raha hai." title="Tap to help him jump!">🌹</div>
+        <svg class="game-vaidehi" viewBox="0 0 60 100" fill="none" stroke="#6b4452" stroke-width="1.5"><circle cx="30" cy="20" r="12"/><path d="M30 32 v18 M22 50 l8 22 M38 50 l-8 22 M22 72 l16 0"/><path d="M25 42 l-5 4 M35 42 l5 4"/><ellipse cx="28" cy="18" rx="4" ry="3" fill="none" stroke="#e88a9a"/><circle cx="27" cy="17" r="1.5" fill="#e88a9a"/><circle cx="29" cy="17" r="1.5" fill="#e88a9a"/></svg>
+      </div>
+    </div>
+    <p class="scene-text">Help him reach Vaidehi — tap to make him jump!</p>
+  </section>
+
+  <section class="scene" id="scene6">
+    <div class="illus-wrap hug-wrap">
+      <svg class="heart-burst" viewBox="0 0 24 24" fill="#e88a9a"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      <svg class="heart-burst" viewBox="0 0 24 24" fill="#f4a6b0"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      <svg class="heart-burst" viewBox="0 0 24 24" fill="#e88a9a"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      <svg class="heart-burst" viewBox="0 0 24 24" fill="#f4a6b0"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      <svg class="heart-burst" viewBox="0 0 24 24" fill="#e88a9a"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      <svg class="heart-burst" viewBox="0 0 24 24" fill="#f4a6b0"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      <svg class="hug-zoom" viewBox="0 0 200 140" fill="none" stroke="#6b4452" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="65" cy="45" r="18"/><path d="M65 63 v22 M55 85 l10 28 M75 85 l-10 28 M55 113 l20 0"/><path d="M50 72 l-8 6 M80 72 l8 6"/><path d="M58 98 Q65 90 72 98"/><path d="M75 68 Q95 58 118 68" stroke-width="2"/>
+        <circle cx="62" cy="43" r="2.5" fill="#6b4452"/><circle cx="68" cy="43" r="2.5" fill="#6b4452"/>
+        <circle cx="135" cy="48" r="18"/><path d="M135 66 v20 M125 86 l10 26 M145 86 l-10 26 M125 112 l20 0"/><path d="M120 74 l-7 5 M150 74 l7 5"/><path d="M128 98 Q135 92 142 98"/><path d="M118 65 Q98 56 78 68" stroke-width="2"/>
+        <ellipse cx="128" cy="32" rx="6" ry="4" fill="none" stroke="#e88a9a"/><circle cx="126" cy="31" r="2" fill="#e88a9a"/><circle cx="130" cy="31" r="2" fill="#e88a9a"/><circle cx="132" cy="46" r="2.5" fill="#6b4452"/><circle cx="138" cy="46" r="2.5" fill="#6b4452"/>
+      </svg>
+    </div>
+    <p class="scene-text script">Happy Rose Day Vaidehi ❤️<br><br>Main gussa nahi hota… tumse sirf pyaar hota hai.</p>
+  </section>
+
+  <section class="scene" id="sceneEnd">
+    <button type="button" class="fab-btn" id="fabBtn">Tap here if you still like me even a little…</button>
+  </section>
+
+  <div class="ending-overlay" id="endingOverlay">
+    <div class="ending-hearts" id="endingHearts"></div>
+    <div class="ending-message" id="endingMessage">
+      <p>Bas itna hi chahiye tha…<br>tumhari ek si choti si haan.</p>
+    </div>
+    <div class="ending-personal-wrap" id="endingPersonalWrap">
+      <div class="ending-glow-heart" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="rgba(232,138,154,0.25)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      </div>
+      <p class="ending-personal-text">
+        Ek baat aur Vaidehi…<br><br>
+        Main 18 Feb ko nahi aa paaunga.<br>
+        Family ne mana kar diya hai… kal raat hi clearly.<br><br>
+        Par tum hogi to main Feb me hi aa jaunga —<br>
+        bas 20 ke baad, kyunki 20 demo ka last hai.<br><br>
+        Mujhe pata hai tum samajh jaogi.<br>
+        <strong>Main hamesha tumhare liye hoon.</strong>
+      </p>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    var scenes = document.querySelectorAll('.scene');
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.2 });
+    scenes.forEach(function(s){ observer.observe(s); });
+
+    var music = document.getElementById('bgMusic');
+    var musicBtn = document.getElementById('musicToggle');
+    if(music && musicBtn){
+      musicBtn.addEventListener('click', function(){
+        if(music.paused){ music.play().catch(function(){}); musicBtn.classList.add('playing'); }
+        else{ music.pause(); musicBtn.classList.remove('playing'); }
+      });
+    }
+
+    document.querySelectorAll('.collect-heart').forEach(function(el){
+      el.addEventListener('click', function(){ this.classList.add('popped'); });
+      el.addEventListener('touchend', function(e){ e.preventDefault(); this.classList.add('popped'); }, { passive: false });
+    });
+
+    var rubZone = document.getElementById('rubZone');
+    var fogLayer = document.getElementById('fogLayer');
+    var rubHearts = document.getElementById('rubHearts');
+    var heartPath = '<svg viewBox="0 0 24 24" fill="#e88a9a" width="18" height="18"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
+    if(rubZone && rubHearts){
+      var moved = 0, rubbed = false, mouseDown = false;
+      function onRub(e){
+        if(!mouseDown && !e.touches) return;
+        moved++;
+        if(moved > 6 && !rubbed){
+          rubbed = true;
+          rubZone.classList.add('rubbed');
+          for(var i = 0; i < 6; i++){
+            var h = document.createElement('div');
+            h.className = 'rub-heart';
+            h.style.left = (15 + Math.random() * 70) + '%';
+            h.style.top = (20 + Math.random() * 60) + '%';
+            h.innerHTML = heartPath;
+            rubHearts.appendChild(h);
+          }
+        }
+      }
+      rubZone.addEventListener('touchmove', onRub, { passive: true });
+      rubZone.addEventListener('mousedown', function(){ mouseDown = true; });
+      rubZone.addEventListener('mousemove', function(e){ if(e.buttons) onRub(e); });
+      rubZone.addEventListener('mouseup', function(){ mouseDown = false; });
+      rubZone.addEventListener('mouseleave', function(){ mouseDown = false; });
+    }
+
+    var gameBoy = document.getElementById('gameBoy');
+    var popupMsg = document.getElementById('popupMsg');
+    var popups = ['Yeh jump tumhare liye.', 'Roz tumhare peeche aise hi bhagta hoon.', 'Side me ho jao… dil phisal raha hai.'];
+    document.querySelectorAll('.obstacle').forEach(function(ob, i){
+      ob.addEventListener('click', function(){
+        if(gameBoy) gameBoy.classList.add('jumping');
+        if(popupMsg){ popupMsg.textContent = popups[i] || popups[0]; popupMsg.classList.remove('show'); popupMsg.offsetHeight; popupMsg.classList.add('show'); }
+        setTimeout(function(){ if(gameBoy) gameBoy.classList.remove('jumping'); }, 500);
+      });
+      ob.addEventListener('touchend', function(e){ e.preventDefault(); this.click(); }, { passive: false });
+    });
+
+    var fabBtn = document.getElementById('fabBtn');
+    var endingOverlay = document.getElementById('endingOverlay');
+    var endingHearts = document.getElementById('endingHearts');
+    var chimeSound = document.getElementById('chimeSound');
+    var heartSvgEnd = '<svg viewBox="0 0 24 24" fill="#e88a9a" width="24" height="24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
+    function playChime(){
+      try{
+        var C = new (window.AudioContext || window.webkitAudioContext)();
+        var o = C.createOscillator();
+        var g = C.createGain();
+        o.connect(g); g.connect(C.destination);
+        o.frequency.value = 523; o.type = 'sine';
+        g.gain.setValueAtTime(0.15, C.currentTime);
+        g.gain.exponentialRampToValueAtTime(0.01, C.currentTime + 0.3);
+        o.start(C.currentTime); o.stop(C.currentTime + 0.3);
+        setTimeout(function(){ o = C.createOscillator(); o.connect(g); o.frequency.value = 659; o.type = 'sine'; o.start(C.currentTime + 0.15); o.stop(C.currentTime + 0.45); }, 100);
+        setTimeout(function(){ o = C.createOscillator(); o.connect(g); o.frequency.value = 784; o.type = 'sine'; o.start(C.currentTime + 0.3); o.stop(C.currentTime + 0.6); }, 200);
+      }catch(err){}
+    }
+    if(fabBtn && endingOverlay && endingHearts){
+      fabBtn.addEventListener('click', function(){
+        endingOverlay.classList.add('active');
+        playChime();
+        for(var i = 0; i < 40; i++){
+          var h = document.createElement('div');
+          h.className = 'ending-heart';
+          h.innerHTML = heartSvgEnd;
+          h.style.left = Math.random() * 100 + '%';
+          h.style.animationDelay = (Math.random() * 2) + 's';
+          h.style.animationDuration = (3 + Math.random() * 2) + 's';
+          endingHearts.appendChild(h);
+        }
+      });
+      fabBtn.addEventListener('touchend', function(e){ e.preventDefault(); this.click(); }, { passive: false });
+    }
+  })();
+  </script>
+</body>
+</html>
